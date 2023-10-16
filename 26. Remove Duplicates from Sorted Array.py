@@ -1,9 +1,5 @@
 class Solution:
     def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         z=0
         if  nums ==[] :
             return 0
