@@ -1,4 +1,4 @@
-#TBC: Using Dic & count
+#TBC: Using Dic & Count
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
         ransom_count = [0] * 26
