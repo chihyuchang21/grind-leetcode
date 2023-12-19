@@ -17,7 +17,7 @@ class Solution:
             else:
                 stack.pop()
 
-            return True if not stack else False
+        return True if not stack else False
 
 
 
