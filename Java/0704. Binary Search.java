@@ -15,3 +15,53 @@ class Solution {
         return -1;
     }
 }
+
+
+
+
+// s40529 2nd: syntax and return still needed to be concerned
+class Solution {
+    public int search (int[] nums, int target) {
+        left = 0;
+        right = nums.length - 1
+        while (left < right) {
+            mid = left + (right - left) / 2  // 防止 int overflow (if left = max - 2; right = max)
+            if (nums[mid] < target) // if syntax
+                left = mid + 1;
+            else if (nums[mid] > target)
+                right = mid - 1;
+            else if (nums[mid] == target)
+                return target
+        } // where to place return statement
+            return -1;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
