@@ -17,17 +17,16 @@ class Solution {
 class Solution {
     public int[] twoSum(int[] nums, int target) {
            Map<Integer, Integer> map = new HashMap<>();
+           // 儲存 number (key) & index (value)
 
-           for (int i = 0, i < nums.length, i++) {
+           for (int i = 0; i < nums.length; i++) {
             deduction = target - nums[i];
-            if (map.containKey(deduction)) {
-                return
+            if (map.containsKey(deduction)) {
+                return new int[] {map.get(complement), i};
             }
-
+            map.put(nums[i], i);
         }
-
-
-
+           throw new IlligalArgumentException("No Answer");
     }
 }
 
