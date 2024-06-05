@@ -19,7 +19,7 @@ class Solution {
 
 
 
-// s40529 2nd: syntax and return still needed to be concerned
+// 240529 2nd: syntax and return still needed to be concerned
 class Solution {
     public int search (int[] nums, int target) {
         left = 0;
@@ -35,6 +35,10 @@ class Solution {
         } // where to place return statement
             return -1;
         }
+
+
+// 240605 3th
+
 
 
 
