@@ -1,3 +1,7 @@
+// Array
+// 固定大小 / 相同 data type / 連續內存空間 / 2-dimension array
+
+
 // left closed, right open interval
 
 class Solution {
