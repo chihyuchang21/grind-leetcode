@@ -10,7 +10,7 @@
  * }
  */
 
-//slow走一步、fast走兩步，則fast追趕slow，若相遇則有環
+// slow走一步、fast走兩步，則fast追趕slow，若相遇則有環
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;

@@ -9,6 +9,8 @@
  * }
  */
 
+// 2 pointers: fast / slow 目前聯想不到
+
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummyNode = new ListNode(0);
