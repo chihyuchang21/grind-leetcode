@@ -30,12 +30,12 @@ class MyLinkedList {
         return currentNode.val;
     }
 
-    //在鏈表最前面插入一個節點=在第0個元素前添加
+    //在鏈表最前面插入一個節點 = 在第0個元素前添加
     public void addAtHead(int val) {
         addAtIndex(0, val);
     }
 
-    //在鏈表最後面插入一個節點=在第(末尾+1)個元素前添加
+    //在鏈表最後面插入一個節點 = 在第(末尾+1)個元素前添加
     public void addAtTail(int val) {
         addAtIndex(size, val);
     }

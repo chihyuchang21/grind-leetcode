@@ -9,6 +9,8 @@
  * }
  */
 
+// 起手式: 用改變指針的指向思考
+
 //recursion
 class Solution {
     public ListNode swapPairs(ListNode head) {
