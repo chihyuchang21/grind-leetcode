@@ -29,4 +29,18 @@ class Solution {
         }
         return prev;
     }
+
+    // 2nd 240627
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode temp = null;
+        while (cur!= null) {
+            temp = cur.next;
+            cur.next = pre;
+            prev = cur;
+            cur = temp;
+        }
+        return prev;
+    }
 }
