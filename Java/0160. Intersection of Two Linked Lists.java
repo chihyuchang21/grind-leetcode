@@ -10,6 +10,8 @@
  * }
  */
 
+// 先前居然沒看懂題目 XD https://www.bilibili.com/video/BV1SG411C7TH/?spm_id_from=333.337.search-card.all.click&vd_source=110cf687c2a9c66ee5407339348e6ebf
+
 // 合併鏈表實現同步移動
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
