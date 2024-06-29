@@ -66,6 +66,28 @@ class Solution {
     }
 }
 
+/** Notes:
+ * Binary search is an efficient method for finding an element in a sorted list.
+ * Instead of checking each element sequentially (which would take O(N) time),
+ * binary search repeatedly divides the list in half to narrow down the search.
+ * This approach reduces the time complexity to O(log N).
+ *
+ * Here is how binary search works:
+ *
+ * 1. Start with two pointers, one pointing to the start (low) of the list and
+ *    one pointing to the end (high) of the list.
+ * 2. Find the middle element (mid) of the list.
+ * 3. Compare the target element with the middle element:
+ *    a. If they are equal, the search is complete.
+ *    b. If the target is less than the middle element, repeat the search in the
+ *       left half of the list.
+ *    c. If the target is greater than the middle element, repeat the search in
+ *       the right half of the list.
+ * 4. Repeat steps 2-3 until the element is found or the search space is empty.
+ *
+ * Binary search requires that the list be sorted beforehand.
+ */
+
 
 
 

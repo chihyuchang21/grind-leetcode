@@ -27,3 +27,8 @@ class Solution {
     }
 }
 
+/** Notes:
+ * Brute-force: 2 for loop -> Time complexity: O(N*2)
+ * Two-pointers (fast-slow) -> Time complexity: O(N) -> Use one for loop to do what two for loop can do
+ * Thoughts: return slow pointer index, nums[slow] = nums[fast], != val -> fast will still ++
+ */
