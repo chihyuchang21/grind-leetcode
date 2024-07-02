@@ -36,7 +36,7 @@ class Solution {
         if (head == null){
             return head;
         }
-        ListNode dummy = new ListNode(-1, head);
+        ListNode dummy = new ListNode(-1, head); // dummy head // -1 -> value (這裡可以是任何值) ; head -> 指向下一個節點的指針
         ListNode pre = dummy;
         ListNode cur = head;
         while (cur != null){
