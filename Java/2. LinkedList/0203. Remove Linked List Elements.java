@@ -28,7 +28,8 @@
 //    }
 //}
 
-//移除 head 跟移除 others 作法不同，要統一方法則設置 dummy head
+// 移除 head 跟移除 others 作法不同，要統一方法則設置 dummy head
+// 類似快慢指針
 
 
 class Solution {
