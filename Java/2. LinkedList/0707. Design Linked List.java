@@ -1,3 +1,27 @@
+// Definition
+public class ListNode {
+    int value;
+    ListNode val;
+
+    // No Para
+    public ListNode (){
+    }
+
+    // 1 Para (value)
+    public ListNode (int val) {
+        this.val = val;
+    }
+
+    // 2 Para (value, next pt)
+    public ListNode (int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+
+
+
 //單鏈表
 class ListNode{
     int val;
