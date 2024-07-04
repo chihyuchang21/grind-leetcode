@@ -40,12 +40,12 @@ class Solution {
     }
 
     // 2. Using Queue Size
-    public void buildTreeQueue(TreeNode node) {
-        if (node == null) return;
+    public void buildTreeQueue(TreeNode root) {
+        if (root == null) return;
         Queue <TreeNode> que = new LinkedList<TreeNode>();
-        que.offer(node);    // offer 在 queue 滿時不會拋錯，跟 add 不同
+        que.offer(root);    // offer 在 queue 滿時不會拋錯，跟 add 不同
 
-        while (!que.isEmpty()) {
+        while (!que.isEmpty()) { // 終止條件: queue 中沒有元素
             List<Integer> itemList = new ArrayList<Integer>(); // 儲存這層的值
             int len = que.size(); // 這層的節點數量
 
