@@ -16,6 +16,7 @@
 
 class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-
+        if (root == null) return 0;
+        int leftValue =
     }
 }
