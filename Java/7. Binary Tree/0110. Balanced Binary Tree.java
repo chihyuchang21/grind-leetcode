@@ -15,35 +15,30 @@
  */
 
 class Solution {
-    public List<String> binaryTreePaths(TreeNode root) {
-        List<String> paths = new ArrayList<>();
-        if (root == null) return paths;
+    /**
+     * recursion
+     */
+    public boolean isBalanced(TreeNode root) {
+        return getHeight(root) != -1;
+    }
 
-        Queue<TreeNode> nodeQueue = new LinkedList<>();
-        Queue<String> pathQueue = new LinkedList<>();
-
-        nodeQueue.offer(root);
-        pathQueue.offer(Integer.toString(root.val));
-
-        while (!nodeQueue.isEmpty()) {
-            TreeNode currentNode = nodeQueue.poll();
-            String currentPath = pathQueue.poll();
-
-            // 如果是葉子節點，將當前路徑加入結果列表
-            if (currentNode.left == null && currentNode.right == null) {
-                paths.add(currentPath);
-            } else {
-                if (currentNode.left != null) {
-                    nodeQueue.offer(currentNode.left);
-                    pathQueue.offer(currentPath + "->" + currentNode.left.val);
-                }
-                if (currentNode.right != null) {
-                    nodeQueue.offer(currentNode.right);
-                    pathQueue.offer(currentPath + "->" + currentNode.right.val);
-                }
-            }
+    private int getHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
-
-        return paths;
+        int leftHeight = getHeight(root.left);
+        if (leftHeight == -1) {
+            return -1;
+        }
+        int rightHeight = getHeight(root.right);
+        if (rightHeight == -1) {
+            return -1;
+        }
+        // 左右子樹高度差 > 1，return -1 表示已經不是 balanced tree
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
+
