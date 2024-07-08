@@ -1,5 +1,7 @@
 # Table of Content
 
+
+
 - **Array**
 - **Linked List**
 - **Hash Table**
@@ -10,3 +12,8 @@
 - **Back Tracking**
 - **Greedy**
 - **Dynamic Programming**
+
+<br>
+
+- **Current Status** <br>
+![](https://leetcard.jacoblin.cool/chihyuchang21?ext=activity)
