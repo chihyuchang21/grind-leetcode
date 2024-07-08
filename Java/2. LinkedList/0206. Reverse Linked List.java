@@ -36,11 +36,29 @@ class Solution {
         ListNode cur = head;
         ListNode temp = null;
         while (cur!= null) {
-            temp = cur.next;
-            cur.next = pre;
-            prev = cur;
-            cur = temp;
+            temp = cur.next; // 先儲存 cur 要往前的位置
+            cur.next = prev; // 改變指向
+            prev = cur; // prev 指針往前
+            cur = temp; // cur 再往前
         }
         return prev;
+    }
+
+    // 3rd 240708
+
+    class Solution {
+        public ListNode reverseList(ListNode head) {
+            ListNode pre = null;
+            ListNode cur = head;
+            ListNode temp = null;
+
+            while (cur != null) {
+                temp = cur.next;
+                cur.next = prev;
+                prev = cur;
+                cur = temp;
+            }
+            return prev;
+        }
     }
 }
