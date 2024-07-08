@@ -1,9 +1,12 @@
 # Table of Content
 
-- **Array**: 1, 26, 27, 35(同704 binary search), 66, 88, 209, 977  
-- **Linked List**: 203, 876, 707, 206, 24, 19, 142
-- **Hash Table**: 242, 349, 202, 1, 454, 383, 15, 18
-- **String: 344**, 541, 151, 28, 459
-- **Two Pointers**: 27, 344, 151, 206, 19, 142, 15, 18
-- **Stack & Queue**: 232, 225, 20, 1047, 150, 239, 347
-- **Binary Tree**: 144, 145, 94, 102, 107, 199, 637, 429, 515, 116, 117, 104, 111, 226, 101, 104, 111, 222, 110, 257, 404, 513, 112, 106, 654, 617, 700, 98, 530, 501, 236, 235, 701, 450, 669, 108, 538  
+- **Array**
+- **Linked List**
+- **Hash Table**
+- **String**
+- **Two Pointers**
+- **Stack & Queue**
+- **Binary Tree**
+- **Back Tracking**
+- **Greedy**
+- **Dynamic Programming**
