@@ -9,8 +9,34 @@
  * }
  */
 
-// 2 pointers: fast / slow 目前聯想不到 (+這解法要搭配看圖)
+// 240709: 混合 NeetCode 和 隨想錄 的寫法較易理解
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummyNode = new ListNode(0); // 虛擬頭結點
+        dummyNode.next = head;
+        ListNode rightIndex = dummyNode;
+        ListNode leftIndex = dummyNode;
 
+        // 先利用 n 移動 right Index (移動 n + 1 步)
+        for (int i = 0; i <= n; i++) {
+            rightIndex = rightIndex.next;
+        }
+
+        // left, right Index 一起移動
+        while (rightIndex != null) {
+            leftIndex = leftIndex.next;
+            rightIndex = rightIndex.next;
+        }
+
+        // 刪除該結點 (跳過該結點)
+        leftIndex.next = leftIndex.next.next;
+        return dummyNode.next;
+    }
+}
+
+
+
+// 2 pointers: fast / slow 目前聯想不到 (+這解法要搭配看圖)
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummyNode = new ListNode(0);
