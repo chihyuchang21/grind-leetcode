@@ -16,17 +16,16 @@ class Solution {
 // Sol2: HashMap
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-           Map<Integer, Integer> map = new HashMap<>();
-           // 儲存 number (key) & index (value)
+        Map<Integer, Integer> map = new HashMap<>();
 
-           for (int i = 0; i < nums.length; i++) {
-            deduction = target - nums[i];
-            if (map.containsKey(deduction)) {
-                return new int[] {map.get(complement), i};
+        for (int i = 0; i < nums.length; i++) {
+            int deduction = target - nums[i];
+            if(map.containsKey(deduction)) {
+                return new int[] {map.get(deduction), i};
             }
             map.put(nums[i], i);
         }
-           throw new IlligalArgumentException("No Answer");
+        throw new IllegalArgumentException("No Answer");
     }
 }
 
