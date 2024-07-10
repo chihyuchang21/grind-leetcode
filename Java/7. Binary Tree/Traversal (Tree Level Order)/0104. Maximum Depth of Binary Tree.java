@@ -14,6 +14,18 @@
  * }
  */
 
+// 01. recursion DFS
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+        return 1 + Math.max(leftDepth, rightDepth);
+    }
+}
+
+
+// 02. iteration BFS
 class Solution {
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;
@@ -27,13 +39,13 @@ class Solution {
             depth++; // 每進入一層，深度加一
 
             for (int i = 0; i < size; i++) {
-                TreeNode current = queue.poll();
+                TreeNode current = queue.poll(); // 取出佇列中的節點
 
                 if (current.left != null) {
-                    queue.offer(current.left);
+                    queue.offer(current.left);  // 如果有左子節點，加入佇列
                 }
                 if (current.right != null) {
-                    queue.offer(current.right);
+                    queue.offer(current.right); // 如果有右子節點，加入佇列
                 }
             }
         }

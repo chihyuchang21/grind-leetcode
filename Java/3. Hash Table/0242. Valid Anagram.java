@@ -9,7 +9,7 @@ class Solution {
 
         // 計算 T 字串每個字母出現次數
         for (int j = 0; j < t.length(); j++) {
-            record[j.charAt(j) = 'a']--;
+            record[j.charAt(j) - 'a']--;
         }
 
         // 透過以上+-，若完全相等則 String 會全部 = 0
