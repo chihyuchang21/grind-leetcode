@@ -23,7 +23,7 @@ class Solution {
     }
 
     private void traversal(TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return;
         }
 
