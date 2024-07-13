@@ -23,3 +23,4 @@ class Solution {
 }
 
 //return p.val == q.val && p.left == q.left && p.right == q.right;  (一開始的想法，wrong answer)
+// 2nd 0713: still some questions
