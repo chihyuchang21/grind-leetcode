@@ -60,3 +60,33 @@ class Solution {
         }
     }
 }
+
+// 1-1 Deque by NeetCode
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Deque<TreeNode> que = new LinkedList<>();
+        if (root != null) {
+            que.add(root);
+        }
+
+        while (!que.isEmpty()) {
+            List<Integer> levelValue = new ArrayList<>();
+            int levelSize = que.size(); // 保存當前層的節點數量
+
+            for (int i = 0; i levelSize; i++) {
+                TreeNode node = que.poll();
+                levelValue.add(node.val);
+
+                if (node.left != null) {
+                    que.add(node.left);
+                }
+                if (node.right != null) {
+                    que.add(node.right);
+                }
+            }
+            result.add(levelValue);
+        }
+        return result;
+    }
+}
