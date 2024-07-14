@@ -62,17 +62,19 @@ class Solution {
 }
 
 // 1-1 Deque by NeetCode
+// Notice: add value to queue or levelValue (List<Int> in result List)
+
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         Deque<TreeNode> que = new LinkedList<>();
         if (root != null) {
-            que.add(root);
+            que.add(root); // 1st time: add first root node on 1st level
         }
 
         while (!que.isEmpty()) {
             List<Integer> levelValue = new ArrayList<>();
-            int levelSize = que.size(); // 保存當前層的節點數量
+            int levelSize = que.size(); // 保存當前層的節點數量; 1st time: 1
 
             for (int i = 0; i levelSize; i++) {
                 TreeNode node = que.poll();
