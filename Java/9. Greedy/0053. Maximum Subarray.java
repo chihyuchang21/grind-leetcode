@@ -1,5 +1,4 @@
 // Kadane's Algorithm
-
 class Solution {
     public int maxSubArray(int[] nums) {
         if (nums.length == 1) return nums[0];
