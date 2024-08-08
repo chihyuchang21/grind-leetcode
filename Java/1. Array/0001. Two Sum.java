@@ -94,7 +94,11 @@ class Solution {
  * 2. The difference between int[] (array) and ArrayList
  *      When using int[], we can initialize it as int[2] first, or we can use new int[]{i, j} directly (important)
  * 3. Where to place return null result
- * 4. How to create a new HashMap<Integer, Integer>
+ *
+ * [HashMap]
+ * 1. How to create a new HashMap<Integer, Integer>
+ * 2. map.containsKey -> return boolean
+ * 3. map.put(key, value) -> decide what to place in map
  */
 
 

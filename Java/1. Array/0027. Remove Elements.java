@@ -27,8 +27,47 @@ class Solution {
     }
 }
 
-/** Notes:
- * Brute-force: 2 for loop -> Time complexity: O(N*2)
- * Two-pointers (fast-slow) -> Time complexity: O(N) -> Use one for loop to do what two for loop can do
- * Thoughts: return slow pointer index, nums[slow] = nums[fast], != val -> fast will still ++
+// 240808
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int slowIndex = 0;
+        for (int fastIndex = 0; fastIndex < nums.length; fastIndex++) {
+            if (nums[fastIndex] == val) {
+                // Do nothing
+            } else {
+                nums[slowIndex] = nums[fastIndex];
+                slowIndex++;
+            }
+        }
+        return slowIndex;
+    }
+}
+
+/**
+ * 240808
+ *
+ * # Understand
+ * 1. Should we return the array, or do we only need to return the length of the array nums?
+ * 2. Is the input array guaranteed to be non-empty?
+ *
+ * # Match
+ * 1. Brute Force
+ *      TC: O(N^2)
+ *      SC: O(1)
+ * 2. Two Pointers
+ *      TC: O(N)
+ *      SC: O(1)
+ *
+ * # Plan
+ * # Impliment
+ * # Review
+ * # Evaluate
+ *
+ * # Notes
+ * 1. My logic is reversed; I got stuck when nums[fastIndex] == val. -> better solution for me!
+ * 2. Don't understand the meaning of returning 'slowIndex'
  */
+
+
+
+
