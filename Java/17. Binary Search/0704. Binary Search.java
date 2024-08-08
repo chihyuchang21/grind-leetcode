@@ -85,6 +85,31 @@ class Solution {
     }
 }
 
+/**
+ * 240807
+ *
+ * # Understand
+ * 1. Can the nums array be empty?
+ * 2. Is the array sorted
+ *
+ *
+ * # Match
+ * Binary Search
+ *      TC: O(log N)
+ *      SC: O(1) -> because we only use a few variables to store pointers (left, right, mid) and the target value.
+ *
+ * # Plan
+ * # Impliment
+ * # Review
+ * # Evaluate
+ *
+ * # Notes
+ * 1. What to do to middle if it doesn't divide evenly?
+ * 2. Using left + right may lead to integer overflow.
+ * 3. [important] while (left <= right)
+ */
+
+
 /** Notes:
  * Binary search is an efficient method for finding an element in a sorted list.
  * Instead of checking each element sequentially (which would take O(N) time),
