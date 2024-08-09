@@ -98,7 +98,7 @@ class Solution {
  * [HashMap]
  * 1. How to create a new HashMap<Integer, Integer>
  * 2. map.containsKey -> return boolean
- * 3. map.put(key, value) -> decide what to place in map
+ * 3. map.put(key, value) -> decide what to place in ma
  */
 
 
