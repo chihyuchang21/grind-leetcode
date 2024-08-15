@@ -14,4 +14,7 @@ class Solution {
     }
 }
 
+// TC requirement: O(log m x n)
+
+
 // NeetCode still has solution 2
