@@ -43,6 +43,32 @@ class Solution {
     }
 }
 
+// 240909
+// Sliding Window
+class Solution{
+    public int minSubArrayLen(int s, int[] nums){
+
+        int left = 0;
+        int sum = 0;
+        int result = Integer.MAX_VALUE;
+
+        // Using one for loop (the endpoint of sliding window)
+        for(int right = 0; right < nums.length; right ++){
+            sum += nums[right];
+            while (sum >= s){
+                result = Math.min(result, right - left + 1);
+                sum -= nums[left];  // 將左邊界的元素從總和中減去
+                left++;             // 移動左邊界指標
+            }
+        }
+        if (result == Integer.MAX_VALUE) {
+            return 0;
+        } else {
+            return result;
+        }
+    }
+}
+
 /**
  * 240809
  *

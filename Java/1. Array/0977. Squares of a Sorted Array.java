@@ -57,6 +57,35 @@ class Solution {
     }
 }
 
+// 240909 應從 Array 最右邊開始填充
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        // 創建一個新的數組來儲存結果
+        int[] result = new int[nums.length];
+
+        // 初始化左右指標
+        int left = 0;
+        int right = nums.length - 1;
+
+        // 從結果數組的最後一個位置開始填充（因為平方數越大，數值越大）
+        for (int i = nums.length - 1; i >= 0; i--) {
+            // 比較 nums 左邊和右邊的平方數，將較大的填入結果數組
+            if (Math.abs(nums[left]) > Math.abs(nums[right])) {
+                result[i] = nums[left] * nums[left];
+                left++;  // 移動左指標
+            } else {
+                result[i] = nums[right] * nums[right];
+                right--;  // 移動右指標
+            }
+        }
+
+        return result;
+    }
+}
+
+// Math.abs(nums[left]) == Math.abs(nums[right]) 的情況移動哪一邊都可以
+
+
 /**
  * 240808
  *

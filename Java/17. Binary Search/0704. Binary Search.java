@@ -86,6 +86,53 @@ class Solution {
 }
 
 // 240904: Forget mid setting
+// HackerRank Format
+import java.util.Scanner;
+
+    class Solution {
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            // 讀取 nums 數組的長度
+            int n = scanner.nextInt();
+            int[] nums = new int[n];
+
+            // 讀取 nums 數組
+            for (int i = 0; i < n; i++) {
+                nums[i] = scanner.nextInt();
+            }
+
+            // 讀取 target
+            int target = scanner.nextInt();
+
+            // 呼叫 search 函數，並輸出結果
+            Solution solution = new Solution();
+            int result = solution.search(nums, target);
+            System.out.println(result);
+        }
+
+        public int search(int[] nums, int target) {
+            int left = 0;
+            int right = nums.length - 1;
+
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+
+                if (nums[mid] < target) {
+                    left = mid + 1;
+                } else if (nums[mid] > target) {
+                    right = mid - 1;
+                } else {
+                    return mid;
+                }
+            }
+
+            return -1;
+        }
+    }
+
+
 
 
 /**
