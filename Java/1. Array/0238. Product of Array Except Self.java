@@ -65,6 +65,31 @@ class Solution {
     }
 }
 
+class Solution {
+    public int[] productExceptSeldt(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            result[i] = 1;
+        }
+
+        int leftPro = 1;
+        for (int i = 0; i < n; i++) {
+            result[i] *= leftPro; // result[i] = result[i] * leftPro
+            leftPro *= nums[i]; // leftPro = leftPro * nums[i]
+        }
+
+        int rightPro = 1;
+        for (int i = n - 1; i >= 0 ; i--) {
+            result[i] *= rightPro;
+            rightPro *= nums[i];
+        }
+    return result;
+    }
+
+}
+
 /**
  * 240810
  *
