@@ -1,5 +1,6 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
+        // 從右上角移動
         int i = 0, j = matrix[0].length - 1;
         while (i < matrix.length && j >= 0) {
             if (matrix[i][j] == target) {
