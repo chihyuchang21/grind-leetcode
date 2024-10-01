@@ -94,3 +94,5 @@ class Solution {
         return dummyNode.next;
     }
 }
+
+// 1001: moving tricks
