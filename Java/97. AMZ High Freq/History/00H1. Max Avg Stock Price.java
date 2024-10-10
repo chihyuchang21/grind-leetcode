@@ -1,4 +1,4 @@
-
+// similar to 560
 // stock price
 // k: consecutive months -> observable if no two month have the same price -> cumulative observable sum
 // for n months
@@ -28,6 +28,7 @@ class Solution {
 
             set.add(stockPrices[i]);
             currentSum += stockPrices[i];
+
             // 當窗口內的數量達到 k 並且所有數值都不相同時，更新最大值
             if (window.size() == k) {
                 maxSum = Math.max(maxSum, currentSum);
