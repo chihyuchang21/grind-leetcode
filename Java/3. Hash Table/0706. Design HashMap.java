@@ -4,7 +4,6 @@ class MyHashMap {
     private int[] keys;
     private int[] values;
 
-
     public MyHashMap() {
         keys = new int[CAPACITY];
         values = new int[CAPACITY];
