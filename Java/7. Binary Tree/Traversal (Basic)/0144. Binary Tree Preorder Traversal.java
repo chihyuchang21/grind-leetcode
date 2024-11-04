@@ -14,21 +14,45 @@
  * }
  */
 
+//class Solution {
+//    private List<Integer> result = new ArrayList<>();
+//
+//    public List<Integer> preorderTraversal(TreeNode root) {
+//        traversal(root);
+//        return result;
+//    }
+//
+//    private void traversal(TreeNode root) {
+//        if (root == null) {
+//            return;
+//        }
+//
+//        result.add(root.val);
+//        traversal(root.left);
+//        traversal(root.right);
+//    }
+//}
+
+// Recursive
 class Solution {
-    private List<Integer> result = new ArrayList<>();
-
     public List<Integer> preorderTraversal(TreeNode root) {
-        traversal(root);
-        return result;
-    }
-
-    private void traversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
         if (root == null) {
-            return;
+            return result;
         }
 
-        result.add(root.val);
-        traversal(root.left);
-        traversal(root.right);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+
     }
 }
