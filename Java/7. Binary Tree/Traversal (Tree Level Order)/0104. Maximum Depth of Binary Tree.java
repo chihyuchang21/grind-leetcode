@@ -25,6 +25,26 @@ class Solution {
 }
 
 
+class Solution {
+
+    int maxDepth = 0;
+
+    public int maxDepth(TreeNode root) {
+        helper(root, 1);
+        return maxDepth;
+    }
+
+    public void helper(TreeNode node, int level) {
+        if(node==null) {
+            return;
+        }
+        maxDepth = Math.max(level, maxDepth);
+        helper(node.left, level+1);
+        helper(node.right, level+1);
+    }
+}
+
+
 // 02. iteration BFS
 class Solution {
     public int maxDepth(TreeNode root) {
