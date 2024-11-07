@@ -33,9 +33,10 @@ class Solution {
         if (root == null || root.val == val) {
             return root;
         }
+        // 如果目標值小於當前節點的值，則往左子樹搜尋
         if (val < root.val) {
             return searchBST(root.left, val);
-        } else {
+        } else { // 否則往右子樹搜尋
             return searchBST(root.right, val);
         }
     }
