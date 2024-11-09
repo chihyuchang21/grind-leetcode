@@ -69,6 +69,8 @@ class Solution {
  * # Notes
  * 1. My logic is reversed; I got stuck when nums[fastIndex] == val. -> better solution for me!
  * 2. Don't understand the meaning of returning 'slowIndex'
+ * 3. 241109: 這題tricky的地方在於只要回傳刪掉後的length，所以只要注意slowIndex的Index value就好
+ * slowIndex 用來標記下一個放置"非 val 值"的位置
  */
 
 
