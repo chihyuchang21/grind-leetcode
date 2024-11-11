@@ -19,6 +19,34 @@ class Solution {
     }
 }
 
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> res = new ArrayList<>();
+
+        for (int[] interval : intervals) {
+            // 當前區間在 newInterval 左側，無需合併
+            if (interval[1] < newInterval[0]) {
+                res.add(interval);
+            }
+            // 當前區間在 newInterval 右側，無需合併，直接加入 newInterval
+            else if (interval[0] > newInterval[1]) {
+                res.add(newInterval);
+                newInterval = interval;  // 將 newInterval 更新為當前區間，繼續遍歷
+            }
+            // 有重疊情況，合併區間
+            else {
+                newInterval[0] = Math.min(interval[0], newInterval[0]);
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            }
+        }
+
+        // 如果 newInterval 還沒插入，加入最後
+        res.add(newInterval);
+
+        // 將結果轉換為二維陣列並返回
+        return res.toArray(new int[res.size()][]);
+    }
+}
 
 
 /**
