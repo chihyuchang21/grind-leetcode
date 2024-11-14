@@ -30,7 +30,7 @@ class Solution {
         if (intervals == null || intervals.length == 0) return intervals;
         List<int[]> res = new ArrayList<>();
 
-        Arrays.sort(intervals, (a,b) -> (a[0] - b[0])); // remember!
+        Arrays.sort(intervals, (a,b) -> Integer.compare(a[0],b[0])); // remember!
 
         int[] curr = intervals[0]; // the element we currently iterate
 
