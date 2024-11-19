@@ -39,7 +39,6 @@ class Solution {
 
             // 如果當前字符已經存在於窗口內，則移動左指針，直到移除重複的字符
             while (charSet.contains(c)) {
-                charSet.remove(s.charAt(left)); // 從 Set 中移除左指針指向的字符
                 left++; // 移動左指針
             }
 
@@ -56,24 +55,3 @@ class Solution {
 
 
 
-// Discard
-// class Solution {
-//     public int lengthOfLongestSubstring(String s) {
-//         List<Character> subString = new ArrayList<>();
-//         int largestLength = 0;
-
-//         for (int right = 0; right < s.length(); right++) {
-//             char currentChar = s.charAt(right);
-
-//             if (subString.contains(currentChar)) {
-//                 int index = subString.indexOf(currentChar);
-//                 subString = subString.subList(index + 1, subString.size());
-//             }
-
-//             subString.add(currentChar);
-//             largestLength = Math.max(largestLength, subString.size());
-//         }
-
-//         return largestLength;
-//     }
-// }
