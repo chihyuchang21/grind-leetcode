@@ -9,31 +9,12 @@
  * }
  */
 
-// 01. recursion，沒把握
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        if (list1 != null && list2 != null) {
-           if (list1.val < list2.val) {
-               list1.next = mergeTwoLists(list1.next, list2);
-               return list1;
-           } else {
-               list2.next = mergeTwoLists(list1, list2.next);
-               return list2;
-           }
-        }
-        if (list1 == null)
-            return list2;
-        return list1;
-    }
-}
+        ListNode dummyHead = new ListNode(-1, head);
+        ListNode cur = dummyHead;
 
-// 02. iteration (while loop)
-class Solution {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode prehead = new ListNode(-1); // initialization
-        ListNode cur = prehead;
-
-        while (list1 != null && list2 != null) { // null -> 裡面沒東西、iterate 完畢
+        while (list1 != null && list2 != null) {
             if (list1.val <= list2.val) {
                 cur.next = list1;
                 list1 = list1.next;
@@ -44,13 +25,18 @@ class Solution {
             cur = cur.next;
         }
 
-        // 還有沒 iterate 完的 element
-        if (list1 != null) {
+        while (list1 != null) {
             cur.next = list1;
-        } else {
-            cur.next = list2;
+            list1 = list1.next;
+            cur = cur.next;
         }
 
-        return prehead.next;
+        while (list2 != null) {
+            cur.next = list2;
+            list2 = list2.next;
+            cur = cur.next;
+        }
+
+        return dummyHead.next;
     }
 }
