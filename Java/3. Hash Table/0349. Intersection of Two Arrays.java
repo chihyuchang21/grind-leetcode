@@ -53,3 +53,5 @@ class Solution {
         return result;
     }
 }
+
+// 3th 241210: 這次滿順的，但set轉array稍微卡 + second func construction
