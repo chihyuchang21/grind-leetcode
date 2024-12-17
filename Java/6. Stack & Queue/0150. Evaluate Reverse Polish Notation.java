@@ -1,12 +1,13 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-        int a,b;
+        int a, b;
         Stack<Integer> st = new Stack<Integer>();
 
-        // leetcode 的 jdk 好像不能用 ==
-        for (String s : tokens) {
+        for (int i = 0; i < tokens.length; i++) {
+            String s = tokens[i];
+
             if (s.equals("+")) {
-                st.add(st.pop() + st.pop()); // why pop 這兩個
+                st.add(st.pop() + st.pop());
             } else if (s.equals("/")) {
                 b = st.pop();
                 a = st.pop();
@@ -17,8 +18,7 @@ class Solution {
                 b = st.pop();
                 a = st.pop();
                 st.add(a - b);
-            }
-            else {
+            } else {
                 st.add(Integer.parseInt(s));
             }
         }

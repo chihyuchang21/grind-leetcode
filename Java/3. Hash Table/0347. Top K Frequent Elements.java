@@ -1,19 +1,31 @@
-// maxHeap
+// maxHeap -> can't memorize
+import java.util.*;
+
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>(); // key -> element ; value -> frequency
-
-        for (int num: nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1); // 這個記 freq 的方法第二次出現了
+        // 1. 使用 HashMap 統計頻率
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>((pair1, pair2) -> pair2[1] - pair[1]); // 表示用數組中第二個元素（索引為 1 的元素）來比較：
+        // 2. 建立最小堆，按照頻率排序 (比較器: 頻率升序)
+        PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>(
+                (a, b) -> a.getValue() - b.getValue() // 比較頻率大小
+        );
+
+        // 3. 遍歷 map，將元素放入最小堆
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            pq.add(new int[]{entry.getKey(), entry.getValue()});
+            minHeap.add(entry);
+            if (minHeap.size() > k) { // 當堆的大小超過 k，移除堆頂（頻率最低的）
+                minHeap.poll();
+            }
         }
-        int [] ans = new int[k];
-        for (int i = 0; i < k; i++) {   // 依次彈出 k 個
-            ans[i] = pq.poll()[0];
+
+        // 4. 將堆中的元素取出，放入結果陣列
+        int[] ans = new int[k];
+        for (int i = 0; i < k; i++) {
+            ans[i] = minHeap.poll().getKey();
         }
         return ans;
     }
