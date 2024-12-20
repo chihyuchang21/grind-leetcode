@@ -89,7 +89,7 @@ class Solution {
             List<Integer> levelValue = new ArrayList<>();
             int levelSize = que.size(); // 保存當前層的節點數量; 1st time: 1
 
-            for (int i = 0; i levelSize; i++) {
+            for (int i = 0; i < levelSize; i++) {
                 TreeNode node = que.poll();
                 levelValue.add(node.val);
 
