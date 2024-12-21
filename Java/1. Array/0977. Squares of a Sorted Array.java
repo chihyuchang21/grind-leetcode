@@ -85,6 +85,32 @@ class Solution {
 
 // Math.abs(nums[left]) == Math.abs(nums[right]) 的情況移動哪一邊都可以
 
+// 241220
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int right = n - 1;
+        int[] result = new int[n];
+
+        for (int i = n - 1; i >= 0; i--) { // 從後向前填入結果陣列
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+
+            if (leftSquare > rightSquare) {
+                result[i] = leftSquare;
+                left++;
+            } else {
+                result[i] = rightSquare;
+                right--;
+            }
+        }
+
+        return result;
+    }
+}
+
+
 
 /**
  * 240808
