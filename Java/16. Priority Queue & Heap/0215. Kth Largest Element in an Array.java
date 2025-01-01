@@ -1,3 +1,4 @@
+// Using Min Heap
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> heap = new PriorityQueue<>(); // create a min heap
@@ -12,6 +13,28 @@ class Solution {
         return heap.peek();
     }
 }
+
+// Using Max Heap
+ class Solution {
+     public int findKthLargest(int[] nums, int k) {
+         // 創建最大堆
+         PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+
+         // 將所有數字加入最大堆
+         for (int n : nums) {
+             maxHeap.add(n);
+         }
+
+         // 移除堆頂元素 k-1 次
+         for (int i = 0; i < k - 1; i++) {
+             maxHeap.poll();
+         }
+
+         // 堆頂元素即為第 k 大的數字
+         return maxHeap.peek();
+     }
+ }
+
 
 // In Java, a PriorityQueue is implemented using a binary heap, which can either be a min-heap or a max-heap:
 
