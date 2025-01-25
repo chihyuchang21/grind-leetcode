@@ -47,7 +47,7 @@ class Solution {
             if (cur != null){
                 stack.push(cur);
                 cur = cur.left;
-            }else{
+            } else{
                 cur = stack.pop();
                 result.add(cur.val);
                 cur = cur.right;

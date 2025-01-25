@@ -1,87 +1,87 @@
-class Node {
-    int key;
-    int val;
-    Node prev;
-    Node next;
-
-    public Node(int key, int val) {
-        this.key = key;
-        this.val = val;
-        this.prev = null;
-        this.next = null;
-    }
-}
-
+import java.util.HashMap;
 
 class LRUCache {
+    // 雙向鏈表的節點類
+    private class Node {
+        int key;
+        int value;
+        Node prev;
+        Node next;
 
-    private int cap;
-    private HashMap<Integer, Node> cache;
-    private Node left;
-    private Node right;
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+
+    }
+
+    private HashMap<Integer, Node> cache; // 用於儲存鍵與節點的映射
+    private Node head; // 假頭節點
+    private Node tail; // 假尾節點
+    private int capacity; // 緩存容量
 
     public LRUCache(int capacity) {
-        this.cap = capacity;
-        this.cache = new HashMap<>();
-        this.left = new Node(0, 0);
-        this.right = new Node(0, 0);
-        this.left.next = this.right;
-        this.right.prev = this.left;
+        this.capacity = capacity;
+        cache = new HashMap<>();
+        head = new Node(0, 0); // 假頭
+        tail = new Node(0, 0); // 假尾
+        head.next = tail;
+        tail.prev = head;
     }
 
-    private void remove(Node node) {
-        Node prev = node.prev;
-        Node nxt = node.next;
-        prev.next = nxt;
-        nxt.prev = prev;
-    }
-
-    private void insert(Node node) {
-        Node prev = this.right.prev;
-        prev.next = node;
-        node.prev = prev;
-        node.next = this.right;
-        this.right.prev = node;
-    }
-
+    // 獲取值
     public int get(int key) {
         if (cache.containsKey(key)) {
             Node node = cache.get(key);
-            remove(node);
-            insert(node);
-            return node.val;
+            moveToHead(node); // 將該節點移動到鏈表的頭部
+            return node.value;
         }
-        return -1;
+        return -1; // 未找到
     }
 
+    // 插入/更新值
     public void put(int key, int value) {
         if (cache.containsKey(key)) {
-            remove(cache.get(key));
-        }
-        Node newNode = new Node(key, value);
-        cache.put(key, newNode);
-        insert(newNode);
-
-        if (cache.size() > cap) {
-            Node lru = this.left.next;
-            remove(lru);
-            cache.remove(lru.key);
+            Node node = cache.get(key);
+            node.value = value; // 更新值
+            moveToHead(node); // 移動到頭部
+        } else {
+            Node newNode = new Node(key, value);
+            cache.put(key, newNode); // 添加到緩存中
+            addNode(newNode); // 添加到鏈表頭部
+            if (cache.size() > capacity) {
+                Node tailNode = removeTail(); // 刪除尾部節點
+                cache.remove(tailNode.key); // 從緩存中刪除
+            }
         }
     }
+
+    // 將節點添加到頭部
+    private void addNode(Node node) {
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    // 移動節點到頭部
+    private void moveToHead(Node node) {
+        removeNode(node);
+        addNode(node);
+    }
+
+    // 刪除節點
+    private void removeNode(Node node) {
+        Node prevNode = node.prev;
+        Node nextNode = node.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+    }
+
+    // 刪除尾部節點
+    private Node removeTail() {
+        Node res = tail.prev;
+        removeNode(res);
+        return res;
+    }
 }
-
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
-
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
