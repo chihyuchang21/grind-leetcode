@@ -13,22 +13,7 @@ class Solution {
     }
 }
 
-// Sol2: HashMap
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-           Map<Integer, Integer> map = new HashMap<>();
-           // 儲存 number (key) & index (value)
 
-           for (int i = 0; i < nums.length; i++) {
-            deduction = target - nums[i];
-            if (map.containsKey(deduction)) {
-                return new int[] {map.get(complement), i};
-            }
-            map.put(nums[i], i);
-        }
-           throw new IlligalArgumentException("No Answer");
-    }
-}
 
 // 2nd August 24'
 class Solution {
@@ -49,21 +34,25 @@ class Solution {
     }
 }
 
-class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] result = new int[2];
+
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
 
         for (int i = 0; i < nums.length; i++) {
             int deduction = target - nums[i];
-            if (map.containsKey(deduction)) {
-             return new int[]{map.get(deduction),i};
+            if (map.containsKey(deduction) && map.get(deduction) != i) {
+                result[0] = map.get(deduction);
+                result[1] = i;
             }
-            map.put(nums[i],i);
         }
-        return null;
-    }
-}
 
+        return result;
+
+    }
 
 /**
  * 240807
@@ -79,7 +68,7 @@ class Solution {
  *      Tc: O(N^2)
  *      SC: O(1)
  * 2. HashMap
- *      TC: O(1)
+ *      TC: O(N)
  *      SC: O(N)
  *
  * # Plan
