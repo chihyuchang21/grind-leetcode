@@ -68,3 +68,75 @@ class Solution {
        return - 1;
     }
 }
+
+// LC 200
+class Solution {
+    public int findIslands(int[][]grid) {
+        int count = 0;
+        // 1. 2 for loop to iterate the elements
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length) {
+                if (grid[i][j] == 1) {
+                  dfs(grid, i,j);
+                  count++;
+                }
+            }
+        }
+        // 2. call the function of dfs, to make sure that I change the element which were iterated to '0'
+    public void dfs(int[][] grid, int row, int col) {
+            // 3. DFS, it need to be returned if iteration is out of boundry
+            if (row < 0 || col < 0 || row >= grid.length || col >= grid[0].length) {
+                return;
+            }
+            grid[row][col] = 0 // follow-up: can changed to HashSet<> if no edit of grid allowed
+
+            // 4. function execute recursively
+            dfs(grid, i + 1, j);
+            dfs(grid, i - 1, j);
+            dfs(grid, i, j + 1);
+            dfs(grid, i, j - 1);
+        }
+    }
+}
+
+// BFS
+class Solution {
+    public int findIslands(int[][] grid) {
+        if (grid == null || grid.length == 0) return 0; // Edge case: empty grid
+
+        int count = 0;
+        int rows = grid.length, cols = grid[0].length;
+        Queue<int[]> queue = new LinkedList<>();
+
+        // Directions array for moving up, down, left, right
+        int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] == 1) {  // Found new island
+                    count++; // Increase island count
+                    queue.offer(new int[]{i, j}); // Start BFS
+                    grid[i][j] = 0; // Mark as visited
+
+                    // BFS Process
+                    while (!queue.isEmpty()) {
+                        int[] cell = queue.poll(); // Get the front element
+                        int row = cell[0], col = cell[1];
+
+                        // Explore 4 directions
+                        for (int[] dir : directions) {
+                            int newRow = row + dir[0], newCol = col + dir[1];
+
+                            // Check boundaries and if it's land
+                            if (newRow >= 0 && newCol >= 0 && newRow < rows && newCol < cols && grid[newRow][newCol] == 1) {
+                                queue.offer(new int[]{newRow, newCol}); // Add to queue
+                                grid[newRow][newCol] = 0; // Mark as visited
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return count;
+    }
+}
