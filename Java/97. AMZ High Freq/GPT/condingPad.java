@@ -140,3 +140,52 @@ class Solution {
         return count;
     }
 }
+
+// LC: 977
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int right = n - 1;
+        int[] result = new int[n];
+
+        for (int i = n - 1; i >= 0; i--) { // 從後向前填入結果陣列
+            int leftSquare = nums[left] * nums[left];
+            int rightSquare = nums[right] * nums[right];
+
+            if (leftSquare > rightSquare) {
+                result[i] = leftSquare;
+                left++;
+            } else {
+                result[i] = rightSquare;
+                right--;
+            }
+        }
+
+        return result;
+    }
+}
+
+// LC: 20
+// Test Case
+// Input: "()[]{}"
+// Output: true
+class Solution {
+    public findBracket(String s) {
+        Stack<Character> st = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == "(") {
+                st.add(")");
+            } else if (s.charAt(i) == "[") {
+                st.add("]");
+            } else if (s.charAt(i) == "{") {
+                st.add("}");
+            } else if (s.isEmpty() || s.charAt(i) != st.peek()) {
+                st.pop()
+            }
+        }
+        return st.isEmpty();
+    }
+}
+
+// LC: 3
