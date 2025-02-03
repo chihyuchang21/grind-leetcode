@@ -27,3 +27,42 @@ class Solution {
         }
     }
 }
+
+// BFS
+import java.util.*;
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        Map<TreeNode, TreeNode> parentMap = new HashMap<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        parentMap.put(root, null);
+        queue.add(root);
+
+        // Step 1: Store all parent-child relationships in a HashMap
+        while (!parentMap.containsKey(p) || !parentMap.containsKey(q)) {
+            TreeNode node = queue.poll();
+            if (node.left != null) {
+                parentMap.put(node.left, node);
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                parentMap.put(node.right, node);
+                queue.add(node.right);
+            }
+        }
+
+        // Step 2: Store all ancestors of p in a HashSet
+        Set<TreeNode> ancestors = new HashSet<>();
+        while (p != null) {
+            ancestors.add(p);
+            p = parentMap.get(p);
+        }
+
+        // Step 3: Find the first ancestor of q that exists in p's ancestor set
+        while (!ancestors.contains(q)) {
+            q = parentMap.get(q);
+        }
+
+        return q;
+    }
+}
