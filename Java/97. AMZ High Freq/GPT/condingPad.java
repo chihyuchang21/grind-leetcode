@@ -188,4 +188,74 @@ class Solution {
     }
 }
 
-// LC: 3
+// LC: 199
+//  Test Cases:
+// + : ex1
+// - : none
+// edge" [1] ; []
+
+class Solution {
+    public List<Integer> rightSideView(int[]) {
+        // 1. initialize the values I need (result, queue)
+        List<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new LinkedList<>();
+
+        queue.add(root);
+
+        // 2. loop through every level of the tree
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode node = queue.poll();
+
+                // 3. Make sure that the rightmost elements are picked out and add to result array
+                if (i == levelSize) {
+                    result.add(node.val);
+                }
+
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            levelSize++;
+        }
+
+        // 4. Return result array
+        return result;
+
+    }
+}
+
+// Given an integer array nums and an integer k,
+// return the k most frequent elements. You may return the answer in any order.
+
+// Example 1:
+// Input: nums = [1,1,1,2,2,3], k = 2
+// Output: [1,2]
+
+// Example 2:
+// Input: nums = [1], k = 1
+// Output: [1]
+
+// LC: 347 - Top K Frequent Element
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        // <K, V> = <element, freq>
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int element: nums) {
+            map.put(element, map.getOrDefault(0, element) + 1);
+        }
+
+        // what to put as parameters here
+        PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>();
+        for (Map.entry<Integer, Integer> map: map.entrySet()) {
+
+        }
+    }
+}
+
