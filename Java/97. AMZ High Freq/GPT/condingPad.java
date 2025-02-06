@@ -252,10 +252,80 @@ class Solution {
         }
 
         // what to put as parameters here
-        PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>();
-        for (Map.entry<Integer, Integer> map: map.entrySet()) {
+        PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        maxHeap.addAll(map.entrySet());
 
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+         result[i] = maxHeap.poll().getKey();
         }
+
+        return result;
     }
 }
 
+// LC: 144 - Binary Tree Preorder Traversal (root -> left -> right)
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+
+// recursive / TC: O(N)
+class Solution {
+
+     private List<Integer> result = new ArrayList<>();
+
+     public List<Integer> preorderTraversal(TreeNode root) {
+        traversal(root);
+        return result;
+     }
+
+     public void traversal(TreeNode root) {
+        if (root == null) {
+            return result;
+        }
+
+        result.add(root);
+        traversal(root.left);
+        traversal(root.right);
+     }
+ }
+
+// (root -> left -> right)
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Stack<TreeNode> stack =  new Stack<>();
+        stack.add(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        return result;
+    }
+}
