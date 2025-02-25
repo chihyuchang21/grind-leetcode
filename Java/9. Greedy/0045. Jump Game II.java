@@ -1,16 +1,21 @@
 class Solution {
     public int jump(int[] nums) {
-        int res = 0, r = 0, l = 0, fur = 0;
+        int jumps = 0;
+        int maxReach = 0;
+        int lastJumpPos = 0;
 
-        while (r < nums.length - 1) {
-            fur = 0;
-            for (int i = l; i <= r; i++) {
-                fur = Math.max(fur, i + nums[i]);
+        for (int i = 0; i < nums.length - 1; i++) {
+            maxReach = Math.max(maxReach, i + nums[i]);
+
+            if (i == lastJumpPos) {
+                jumps++;
+                lastJumpPos = maxReach;  // 更新下一次跳躍的最遠範圍
+
+                if (maxReach >= nums.length - 1) {  // 如果已經能到終點，結束
+                    break;
+                }
             }
-            l = r + 1;
-            r = fur;
-            res++;
         }
-        return res;
+        return jumps;
     }
 }
