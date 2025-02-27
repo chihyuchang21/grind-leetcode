@@ -11,7 +11,7 @@
 
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode dummyHead = new ListNode(-1, head);
+        ListNode dummyHead = new ListNode(-1);
         ListNode cur = dummyHead;
 
         while (list1 != null && list2 != null) {
@@ -36,7 +36,7 @@ class Solution {
             list2 = list2.next;
             cur = cur.next;
         }
-
         return dummyHead.next;
     }
 }
+
