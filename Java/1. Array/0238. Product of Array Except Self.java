@@ -42,53 +42,35 @@ class Solution {
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        int[] ans = new int[n];
+        int[] answer = new int[n];
 
-        // 初始化 ans 陣列的值為 1
         for (int i = 0; i < n; i++) {
-            ans[i] = 1;
+            answer[i] = 1;
         }
 
+        // left product
         int leftPro = 1;
         for (int i = 0; i < n; i++) {
-            ans[i] *= leftPro;
-            leftPro *= nums[i];
+            answer[i] = answer[i] * leftPro; // memorize this! // 確保第一個值不會乘到其他東西
+            leftPro = leftPro * nums[i];
         }
 
         int rightPro = 1;
         for (int i = n - 1; i >= 0; i--) {
-            ans[i] *= rightPro;
-            rightPro *= nums[i];
+            answer[i] = answer[i] * rightPro;
+            rightPro = rightPro * nums[i];
         }
-
-        return ans;
+        return answer;
     }
 }
 
-class Solution {
-    public int[] productExceptSeldt(int[] nums) {
-        int n = nums.length;
-        int[] result = new int[n];
+//         index: 0 1 2 3
+// Input: nums = [1,2,3,4]
+// Output: ans = [24,12,8,6]
+//               [1,1,1,1]
 
-        for (int i = 0; i < n; i++) {
-            result[i] = 1;
-        }
-
-        int leftPro = 1;
-        for (int i = 0; i < n; i++) {
-            result[i] *= leftPro; // result[i] = result[i] * leftPro
-            leftPro *= nums[i]; // leftPro = leftPro * nums[i]
-        }
-
-        int rightPro = 1;
-        for (int i = n - 1; i >= 0 ; i--) {
-            result[i] *= rightPro;
-            rightPro *= nums[i];
-        }
-    return result;
-    }
-
-}
+// leftPro / ans = [1,1,2,6]
+// rightPro / ans = [] -> same, but reversed
 
 /**
  * 240810

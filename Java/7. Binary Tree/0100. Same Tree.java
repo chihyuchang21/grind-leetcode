@@ -16,11 +16,35 @@
 
 class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) return true; // 是一顆空空樹
-        if (p == null || q == null) return false; // 只有一顆是空空樹
-        return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        // 兩棵樹都空 → 相同
+        if (p == null && q == null) {
+            return true;
+        }
+
+        // 一棵是空的，另一棵不是 → 不相同
+        if (p == null || q == null) {
+            return false;
+        }
+
+        // 值不同 → 不相同
+        if (p.val != q.val) {
+            return false;
+        }
+
+        // 左子樹不同 → 不相同
+        boolean leftSame = isSameTree(p.left, q.left);
+        if (!leftSame) {
+            return false;
+        }
+
+        // 右子樹不同 → 不相同
+        boolean rightSame = isSameTree(p.right, q.right);
+        if (!rightSame) {
+            return false;
+        }
+
+        // 都相同才回傳 true
+        return true;
     }
 }
 
-//return p.val == q.val && p.left == q.left && p.right == q.right;  (一開始的想法，wrong answer)
-// 2nd 0713: still some questions
