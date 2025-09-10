@@ -28,7 +28,7 @@ class Solution {
 
         // 值不同 → 不相同
         if (p.val != q.val) {
-            return false;
+            return false; // 這邊是 return false，如果是反向想 return true 就會導致還沒檢查完就以為是 same tree
         }
 
         // 左子樹不同 → 不相同
